@@ -43,16 +43,6 @@ def cal_power(n):
 			return False
 	return True
 
-
-
-
-
-
-
-
-
-
-
 def Strassens(a,b):
 	s1=a[0][1]-b[1][1]
 	s2=a[0][0]+a[0][1]
