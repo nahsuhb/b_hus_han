@@ -1,1 +1,21 @@
+CONTAINS SOLUTIONS FROM ARCADE PYTHON ETC
+
+MATH PRACTICE
+
+def mathPractice(numbers):
+    return reduce(lambda acc,x: (acc+x[1] if x[0]%2 else acc*x[1]), enumerate(numbers), 1)
+
+FIBONACCI LIST
+
+from functools import reduce
+
+def fibonacciList(n):
+    return [[0] * x for x in reduce(lambda x, n: x + [x[-1]+x[-2]], range(n - 2), [0, 1])]
+    
+
+PRIMES SUM
+
+def primesSum(a, b):
+    return sum([ p for p in range(a,b+1) if p!=1 and 0 not in [p%d for d in range(2,a)]])
+
 
