@@ -1,0 +1,102 @@
+STACKS 
+
+REMOVE ADJACENT DUPLICATES USING STACKS
+
+import string as s
+stk=[]
+n=input("Enter the characters")
+for char in n:
+	if len(stk)==0 and  char in s.ascii_lowercase:
+		stk.append(char)
+	elif char in s.ascii_lowercase and stk[-1]==char:
+		stk.pop()
+	elif char in s.ascii_lowercase and stk[-1]!=char:
+		stk.append(char)
+print("characters with all adjacent duplicates removed are ")
+print(''.join(stk))
+
+
+POSTFIX EVALUATION USING A STACK
+
+
+stk=[]
+n=input('Enter the required postfix expression')
+for char in n:
+	if char.isdigit():
+		stk.append(char)
+	else:
+		if char=='+':
+			m=stk.pop()
+			n=stk.pop()
+			stk.append(str(int(m)+int(n)))
+
+		elif char=='-':
+			m=stk.pop()
+			n=stk.pop()
+			stk.append(str(abs(int(m)-int(n))))
+
+		elif char=='*':
+			m=stk.pop()
+			n=stk.pop()
+			stk.append(str(int(m)*int(n)))
+
+		elif char=='/':
+			m=stk.pop()
+			n=stk.pop()
+			if int(m)>int(n):
+				stk.append(str(int(m)//int(n)))
+			else:
+				stk.append(str(int(n)//int(m)))
+
+print("The value of the above postfix expression is");
+print(int(stk[0]))
+
+BALANCING PARENTHESIS USING STACKS
+
+
+stk=[]
+def push(k):
+	stk.append(k)
+def popped():
+	if isEmpty():
+		return 0
+	else:
+		return stk.pop()
+def check(b,r):
+	if b==')'and r=='(':
+		print('checked')
+	if b==']' and r=='[':
+		print('checked')
+	if b=='}' and r=='{':
+		print('checked')
+
+def isEmpty():
+	return len(stk)==0
+
+
+n=input("Enter the string to check the required parenthesis")
+count=0
+m=1
+for i in n:
+	count+=1
+	if i in '{([':
+		push(i)
+	if i in ')}]':
+		m=popped()
+		if m==0:
+			print('Stack underflow')
+			break
+		else:
+			check(i,m)
+if m is not 0:
+
+
+	if isEmpty():
+		print('Balanced Parenthesis')
+	else:
+		print('Unbalanced')
+
+# ** if stack underflow occurs then still its unbalanced
+
+
+
