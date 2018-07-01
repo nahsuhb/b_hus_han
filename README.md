@@ -1,3 +1,1 @@
-Please use python3 only to compile the files provided above.
-Any room for  issues,improvement in my  code is always welcomed
-
+ALL CODES ARE WRITTEN IN PYTHON3.IF THERE ARE ANY BUGS IN MY PROGRAMS PLEASE MAIL IT AT bhushansemail@gmail.com YOUR SUGGESTIONS ARE ALWAYS WELCOMED
