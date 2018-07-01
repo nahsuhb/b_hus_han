@@ -1,1 +1,262 @@
+ALGORITHMS AND DATA STRUCTURES SOLUTIONS 
+
+FIND THE MEDIAN
+
+def findMedian(arr):
+    return sorted(arr)[len(arr)//2]
+	
+
+CIRCULAR ARRAYS ROTATION
+
+def circularArrayRotation(a, k, queries):
+    for _ in range(k):
+        x=a.pop()
+        a.insert(0,x)
+    return[a[x] for x in queries]
+	
+SPARSE ARRAYS
+
+def matchingStrings(strings, queries):
+    return [strings.count(r) for r in queries]
+	
+EXTRA LONG FACTORIALS
+
+def extraLongFactorials(n):
+    print( math.factorial(n))
+
+
+EQUALISE THE ARRAYS
+
+def equalizeArray(arr):
+    return len(arr)-max([arr.count(e) for e in set(arr)])
+
+ALTERNATING CHARACTERS
+
+def alternatingCharacters(s):
+    count=0
+    stk=[]
+    for elements in s:
+        if len(stk)==0:
+            stk.append(elements)
+        elif stk[-1]==elements:
+            count+=1
+        elif stk[-1]!=elements:
+            stk.append(elements)
+    return count
+
+
+CORRECTNESS AND LOOP INVARIENT
+
+
+def insertion_sort(l):
+    return sorted(l)
+	
+MIGRATORY BIRDS
+
+def migratoryBirds(ar):
+    #m={e:ar.count(e) for e in ar}
+    #return sorted(m.items(),key=lambda m:m[1])[-1][0]
+    max_c=0
+    x=ar[0]
+    for e in set(ar):
+        if ar.count(e)>max_c:
+            max_c=ar.count(e)
+            x=e
+    return x
+
+JIM AND THE ORDERS
+
+def jimOrders(orders):
+    m=[(i+1,sum(x)) for i,x in enumerate(orders) ]
+    m.sort(key=lambda m:m[1])
+    return [x[0] for x in m]
+	
+SUM VS XOR
+
+def solve(n):
+    if n==0:
+        return 1
+    return 2**(str(bin(n))[2:].count('0'))
+
+LONELY INTEGER
+
+def lonelyinteger(a):
+    return[x for x in a if a.count(x)==1][0]
+
+MAXIMIZING XOR
+
+def maximizingXor(l, r):
+    return max([(x^y) for x in range(l,r+1) for y in range(l,r+1) ])
+	
+	
+ANGRY PROFESSOR
+
+def angryProfessor(k, a):
+    if len([ x for x in a if x<=0])>=k:
+        return 'NO'
+    return 'YES'
+	
+	
+HURDLE RACE
+
+def hurdleRace(k, height):
+    if k>=max(height):
+        return 0
+    return max(height)-k
+	
+BIRTHDAY CHOCLATE
+
+def solve(s, d, m):
+    return len([s[i:i+m] for i in range(len(s)-(m-1)) if sum(s[i:i+m])==d])
+	
+
+GRADING STUDENTS
+
+def gradingStudents(grades):
+    y=[]
+    for elements in grades:
+        if elements<38:
+            y.append(elements)
+        else:
+            x=elements
+            while(elements%5)!=0:
+                elements+=1
+            if elements-x<3:
+                y.append(elements)
+            else:
+                y.append(x)
+    return y
+	
+CATS AND A MOUSE
+
+def catAndMouse(x, y, z):
+    if abs(z-x)==abs(z-y):
+        return 'Mouse C'
+    elif abs(z-x)>abs(z-y):
+        return 'Cat B'
+    return 'Cat A'
+	
+
+SOCK MERCHANT
+
+def sockMerchant(n, ar):
+    stk=[]
+    p=[]
+    for elements in sorted(ar):
+        if len(stk)==0:
+            stk.append(elements)
+        elif stk[-1]==elements:
+            p.append((stk.pop(),elements))
+        else:
+            stk.append(elements)
+    return len(p)
+        
+	
+BREAKING THE RECORDS
+
+def breakingRecords(scores):
+    hc,lc, highest,lowest= 0,0,scores[0],scores[0]
+    for w in scores:
+        if w< lowest:
+            lc+=1
+            lowest=w
+        if w> highest:
+            hc+=1
+            highest=w
+    return hc,lc
+	
+	
+MINIMAL ABSOLUTE DIFFERENCE IN AN ARRAY
+
+
+
+def minimumAbsoluteDifference(arr):
+ arr=sorted(arr)
+    mini=10**10
+    for i in range (len(arr)- 1):
+        mini = min(mini, abs(arr[i] - arr[i+1]))
+    return mini
+	
+
+BON APETIET
+
+n,k=map(int,input().split())
+bill=list(map(int,input().rstrip().split()))
+b=int(input())
+if (sum(bill)-bill[k])//2==b:
+    print('Bon Appetit')
+else:
+    print(b-(sum(bill)-bill[k])//2)
+
+
+SUPER REDUCED STRING
+
+
+def super_reduced_string(s):
+    stk=[]
+    for char in s:
+        if char in set('ABCDEFGHIJKLMNOPQRSTUVWXYZ') or char in set('abcdefghijklmnopqrstuvwxyz'):
+        
+            if len(stk)==0:
+                stk.append(char)
+            elif char==stk[-1]:
+                stk.pop()
+            else:
+                stk.append(char)
+    if len(stk)==0:
+        return 'Empty String'
+    return ''.join(stk)
+	
+	
+BEAUTIFUL DAYS AT THE MOVIES
+
+
+def beautifulDays(i, j, k):
+    return len([e for e in range(i,j+1) if abs(e-int(str(e)[::-1]))%k==0])
+	
+
+WORDS SCORE
+
+def is_vowel(letter):
+    return letter in ['a', 'e', 'i', 'o', 'u','y']
+
+def score_words(words):
+    score = 0
+    for word in words:
+        num_vowels = 0
+        for letter in word:
+            if is_vowel(letter):
+                num_vowels += 1
+        if num_vowels % 2 == 0:
+            score += 2
+        else:
+            score+=1
+    return score
+	
+	
+MARK AND TOYS
+
+	def maximumToys(prices, k):
+    arr=[]
+    for i in sorted(prices):
+        if k>0:
+            arr.append(i)
+        k-=i
+    return len(arr)-1
+	
+	
+MARC'S CAKEWALK
+
+def marcsCakewalk(calorie):
+    return sum([element*(2**i) for i,element in enumerate(sorted(calorie)[::-1])])
+
+DESIGN PDF VIEWER
+
+import string as s
+def designerPdfViewer(h, word):
+    z=[tuples for tuples in zip(h,list(s.ascii_lowercase))if tuples[1]in word] 
+    z.sort(key=lambda z:z[0])
+    return len(word)*z[::-1][0][0]
+
+
 
